@@ -1,14 +1,18 @@
 let deferredPrompt;
 const installButton = document.getElementById('installButton');
 
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    installButton.style.display = 'none';
+} else {
+    installButton.style.display = 'block';
+}
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    installButton.style.display = 'block';
 });
 
 installButton.addEventListener('click', (e) => {
-    installButton.style.display = 'none';
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
@@ -17,6 +21,7 @@ installButton.addEventListener('click', (e) => {
             console.log('El usuario rechazó el prompt de instalación');
         }
         deferredPrompt = null;
+        installButton.style.display = 'none';
     });
 });
 
@@ -25,6 +30,15 @@ window.addEventListener('appinstalled', (evt) => {
     console.log('La PWA ha sido instalada');
 });
 
+window.addEventListener('appinstalled', (evt) => {
+    // Almacena un indicador en localStorage
+    localStorage.setItem('appInstalled', 'true');
+});
+
+// Al cargar la página, verifica si el indicador está en localStorage
+if (localStorage.getItem('appInstalled') === 'true') {
+    installButton.style.display = 'none';
+}
 
 const timerDisplay = document.getElementById('timer');
 const startButton = document.getElementById('start');
