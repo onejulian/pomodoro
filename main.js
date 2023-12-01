@@ -1,7 +1,30 @@
+let deferredPrompt;
+const installButton = document.getElementById('installButton');
+
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
+    installButton.style.display = 'block';
 });
+
+installButton.addEventListener('click', (e) => {
+    installButton.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('El usuario aceptó el prompt de instalación');
+        } else {
+            console.log('El usuario rechazó el prompt de instalación');
+        }
+        deferredPrompt = null;
+    });
+});
+
+window.addEventListener('appinstalled', (evt) => {
+    installButton.style.display = 'none';
+    console.log('La PWA ha sido instalada');
+});
+
 
 const timerDisplay = document.getElementById('timer');
 const startButton = document.getElementById('start');
