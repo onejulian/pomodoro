@@ -8,14 +8,14 @@
     "theme_color": "#b91d47",
     "icons": [
       {
-        "src": "pomodoro192.jpg",
+        "src": "pomodoro192.png",
         "sizes": "192x192",
-        "type": "image/jpg"
+        "type": "image/png"
       },
       {
-        "src": "pomodoro512.jpg",
+        "src": "pomodoro512.png",
         "sizes": "512x512",
-        "type": "image/jpg"
+        "type": "image/png"
       }
     ]
   }
