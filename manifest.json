@@ -1,0 +1,22 @@
+{
+    "name": "Temporizador Pomodoro",
+    "short_name": "Pomodoro",
+    "description": "Una aplicación de temporizador Pomodoro para mejorar la productividad.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#b91d47",
+    "icons": [
+      {
+        "src": "pomodoro.jpg",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "pomodoro.jpg",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

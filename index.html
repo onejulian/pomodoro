@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador Pomodoro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <h1 class="text-center text-2xl font-bold">Temporizador Pomodoro</h1>
+        <div id="timer" class="text-center text-4xl font-mono my-4">25:00</div>
+        <div class="flex justify-center space-x-2">
+            <button id="start"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Iniciar</button>
+            <button id="reset"
+                class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Reiniciar</button>
+            <button id="stop"
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Finalizar</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(function (registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(function (error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+
+</html>
